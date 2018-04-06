@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IProducts } from './product';
 import { ProductService } from './product.service';
 @Component({
-    selector: 'productosconi',
     templateUrl:'./product-list.component.html',
     styleUrls:['./product-list.component.css']
 })
@@ -38,14 +37,13 @@ this.showImage=!this.showImage;
 }
 
 ngOnInit():void{
-    this._productService.getProducts()
-    .subscribe(products => {
-        this.products =products;
-        this.filteredProducts=this.products;
-    },
-    error=> this.errorMessage=<any>error);
-    
-    
+    this._productService
+        .getProducts()
+        .subscribe(products => {
+            this.products = products;
+            this.filteredProducts = this.products;
+        },
+        error => this.errorMessage = <any>error);
 }
 
 performFilter( filterby : string ): IProducts[] {
